@@ -59,3 +59,6 @@ if 'cereza' in inventario_frutas:
 else:
     print('No esta cereza en el diccionario')
 ```
+
+## Ejercicio
+crea un programa en python que utiice un diccionario para guardar los nombres de sus amigos y su telefono, ensu caso, el diccionario representa una agenda teefonica, el progrma te pedira nombres y telefonos y los ira guardando en el diccionario (los nombres en mayusculas). Además, el programa debe permitir consultar o eliminar un telefono. incluya un menu de opciones.

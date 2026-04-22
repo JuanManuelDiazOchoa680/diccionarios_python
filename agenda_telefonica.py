@@ -2,20 +2,41 @@ agenda_telefonica = {}
 
 nombre = ""
 telefono = ""
+opcion = None
+
+print("██╗  ██╗ ██████╗ ██╗      █████╗     ██████╗ ███████╗██████╗  █████╗ ")
+print("██║  ██║██╔═══██╗██║     ██╔══██╗    ██╔══██╗██╔════╝██╔══██╗██╔══██╗")
+print("███████║██║   ██║██║     ███████║    ██████╔╝█████╗  ██████╔╝███████║")
+print("██╔══██║██║   ██║██║     ██╔══██║    ██╔═══╝ ██╔══╝  ██╔═══╝ ██╔══██║")
+print("██║  ██║╚██████╔╝███████╗██║  ██║    ██║     ███████╗██║     ██║  ██║")
+print("╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚══════╝╚═╝     ╚═╝  ╚═╝")
 
 def eleccion_menu():
-    agregar_contato = print("1. Agregar contacto")
-    if agregar_contato == 1:
+    print("1. Agregar contacto")
+    print("2. Consultar contacto")
+    print("3. Eliminar contacto")
+    print("4. Mostrar agenda")
+    print("5. Salir")
+
+    opcion = int(input("Seleccione una opción: "))
+
+    if opcion == 1:
         adicionar_contato(nombre, telefono)
-    consultar_contato = print("2. Consultar contacto")
-    if consultar_contato == 2:
+        eleccion_menu()
+    elif opcion == 2:
         consultar_contacto(nombre)
-    eliminar_contato = print("3. Eliminar contacto")
-    if eliminar_contato == 3:
+        eleccion_menu()
+    elif opcion == 3:
         eliminar_contacto(nombre)
-    salir = print("4. Salir")
-    if salir == 4:        print("Saliendo de la agenda telefónica. ¡Hasta luego!")
-    input("Elija una opción: ")
+        eleccion_menu()
+    elif opcion == 4:
+        mostrar_agenda()
+        eleccion_menu()
+    elif opcion == 5:
+        print("Saliendo de la agenda telefónica. ¡Hasta luego!")
+    else:    
+        print("Opción no válida. Por favor, elija una opción del 1 al 5.")
+        eleccion_menu()
 
 def adicionar_contato(nombre, telefono):
     nombre = input("Ingrese el nombre del contacto: ")
@@ -23,7 +44,6 @@ def adicionar_contato(nombre, telefono):
     agenda_telefonica[nombre] = telefono
     print("Contacto agregado exitosamente.")
     print()
-    eleccion_menu()
 
 def consultar_contacto(nombre):
     nombre = input("Ingrese el nombre del contacto a consultar: ")
@@ -32,7 +52,6 @@ def consultar_contacto(nombre):
     else:
         print("Contacto no encontrado.")
     print()
-    eleccion_menu()
 
 def eliminar_contacto(nombre):
     nombre = input("Ingrese el nombre del contacto a eliminar: ")
@@ -42,11 +61,16 @@ def eliminar_contacto(nombre):
     else:
         print("Contacto no encontrado.")
     print()
-    eleccion_menu()
+
+def mostrar_agenda():
+    if not agenda_telefonica:
+        print("La agenda telefónica está vacía.")
+    else:
+        print("Agenda Telefónica:")
+        for nombre, telefono in agenda_telefonica.items():
+            print(f"{nombre}: {telefono}")
+    print() 
 
 
 eleccion_menu()
-adicionar_contato(nombre, telefono)
-consultar_contacto(nombre)
-eliminar_contacto(nombre)
 
